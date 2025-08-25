@@ -13,5 +13,7 @@ RUN pecl install xdebug-3.3.1 && docker-php-ext-enable xdebug gd
 # Get composer binary and install dependencies to workdir
 RUN echo $PATH
 RUN curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
-COPY ../../composer.json /var/www/html
+RUN pwd
+RUN ls -lisah
+COPY ./composer.json /var/www/html
 RUN cd /var/www/html/ && composer install
