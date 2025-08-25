@@ -15,5 +15,5 @@ RUN echo $PATH
 RUN curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 RUN pwd
 RUN ls -lisah
-COPY ./composer.json /var/www/html
-RUN cd /var/www/html/ && composer install
+COPY ./composer.json ./composer.lock /var/www/html
+RUN composer install
