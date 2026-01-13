@@ -145,7 +145,7 @@
 				    {foreach $listcontentdata as $row}
 						{* prepare parent_array for collapsing *}
 						{if $listconfig['allowcollapse'] && $row['level']}
-							{assign var="parent_array" value="-"|explode:$row['parent_id']}
+							{assign var="parent_array" value=$row['parent_id']|split_string:"-"}
 						{/if}
 				    	{if $prevlevel > $row['level'] && $listconfig['allowmove']}
 				    		{while $prevlevel > $row['level']}
@@ -164,10 +164,10 @@
 								{if $listconfig['allowcollapse'] && isset($row['level'])}overview-level-{$row['level']}{/if}
 								{if $listconfig['allowcollapse'] && $row['level']}collapse{/if}"
 								{* reference classes for collapse button *}
-								{if $listconfig['allowcollapse'] && $row['level']} 
+								{if $listconfig['allowcollapse'] && $row['level']}
 									{foreach $parent_array as $level=>$parent}
 										{assign var="parent_array_slice" value=$parent_array|array_slice:0:($level+3)}
-										data-hidecollapseparent{$level-$counter}={$parent_array_slice|implode:'-'}
+										data-hidecollapseparent{$level-$counter}={$parent_array_slice|join_array:'-'}
 									{/foreach}
 									data-collapseparent={$row['parent_id']}
 								{/if}>
@@ -182,7 +182,7 @@
 												<label class="item-select-label">
 													<input class="item-select" data-testid='select-id' type="checkbox" {if !$listconfig['allowselectinvisible'] && !$row['visible']}disabled{/if}>
 												</label>
-													{if $listconfig['beta_box_view_edit']}
+													{if $listconfig['customhrefinrow']}
 														<a class="td-content-field" href="{$row['href']}">
 													{elseif !$row['preventedit'] and !isset($listconfig['allowedit'])}
 														<a class="td-content-field" href="?action={$listconfig['edit']}&origin={$listconfig['origin']}&id={$row['id']}">

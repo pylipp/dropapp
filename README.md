@@ -1,6 +1,9 @@
-[![CircleCI](https://circleci.com/gh/boxwise/dropapp.svg?style=svg)](https://circleci.com/gh/boxwise/dropapp)
-<a width="105" height="35" href="https://auth0.com/?utm_source=oss&utm_medium=gp&utm_campaign=oss" target="_blank" alt="Single Sign On & Token Based Authentication - Auth0">
-<img width="105" height="35" alt="JWT Auth for open source projects" src="https://cdn.auth0.com/oss/badges/a0-badge-dark.png"></a>
+[![DPG Badge](https://img.shields.io/badge/Verified-DPG%20(Since%20%202022)-3333AB?logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzEiIGhlaWdodD0iMzMiIHZpZXdCb3g9IjAgMCAzMSAzMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE0LjIwMDggMjEuMzY3OEwxMC4xNzM2IDE4LjAxMjRMMTEuNTIxOSAxNi40MDAzTDEzLjk5MjggMTguNDU5TDE5LjYyNjkgMTIuMjExMUwyMS4xOTA5IDEzLjYxNkwxNC4yMDA4IDIxLjM2NzhaTTI0LjYyNDEgOS4zNTEyN0wyNC44MDcxIDMuMDcyOTdMMTguODgxIDUuMTg2NjJMMTUuMzMxNCAtMi4zMzA4MmUtMDVMMTEuNzgyMSA1LjE4NjYyTDUuODU2MDEgMy4wNzI5N0w2LjAzOTA2IDkuMzUxMjdMMCAxMS4xMTc3TDMuODQ1MjEgMTYuMDg5NUwwIDIxLjA2MTJMNi4wMzkwNiAyMi44Mjc3TDUuODU2MDEgMjkuMTA2TDExLjc4MjEgMjYuOTkyM0wxNS4zMzE0IDMyLjE3OUwxOC44ODEgMjYuOTkyM0wyNC44MDcxIDI5LjEwNkwyNC42MjQxIDIyLjgyNzdMMzAuNjYzMSAyMS4wNjEyTDI2LjgxNzYgMTYuMDg5NUwzMC42NjMxIDExLjExNzdMMjQuNjI0MSA5LjM1MTI3WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==)](https://www.digitalpublicgoods.net/r/boxtribute)
+
+<p><a width="105" height="35" href="https://auth0.com/?utm_source=oss&utm_medium=gp&utm_campaign=oss" target="_blank" alt="Single Sign On & Token Based Authentication - Auth0">
+<img width="105" height="35" alt="JWT Auth for open source projects" src="https://cdn.auth0.com/oss/badges/a0-badge-dark.png"></a></p>
+
+Build: [![CircleCI](https://circleci.com/gh/boxwise/dropapp.svg?style=svg)](https://circleci.com/gh/boxwise/dropapp)
 
 # Readme
 
@@ -159,7 +162,7 @@ It creates an file in `db/migrations`. Please use this file to write your db mig
 
 To rollback the migrations applied last run
 
-        vendor/bin/phinx migrate
+        vendor/bin/phinx rollback
 
 Again, these command can be executed in the Docker container, too. After running `docker compose up` execute
 
@@ -172,9 +175,9 @@ to launch a shell inside the Docker container and run the phinx commands there. 
 We use [Cypress](https://www.cypress.io) for Browser-test. To run Cypress tests on your local environment, please
 
 1. [Install Cypress via direct Download](https://docs.cypress.io/guides/getting-started/installing-cypress.html#Direct-download)
-2. Set the variable `baseURL` to your local address, e.g. `localhost:8100` in cypress.json.
-3. Set the env variable `auth0Domain` to the development Auth0 tenant,
-   e.g. `boxtribute-dev.eu.auth0.com` in cypress.json.
+2. Set the variable `baseURL` to your local address, e.g. `localhost:8100` in `cypress.config.js`.
+3. In the same file, set the env variable `auth0Domain` to the development Auth0 tenant,
+   e.g. `boxtribute-dev.eu.auth0.com`
 4. Open Cypress and this repo in Cypress
 
 #### Cypress Tests fail due to unsynchronized users with Auth0
